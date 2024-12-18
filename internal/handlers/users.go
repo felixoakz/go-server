@@ -17,6 +17,8 @@ var (
 )
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
+
+
     // Log the request method, URL, and headers
     log.Printf("Received %s request for %s", r.Method, r.URL.Path)
     log.Printf("Request Headers: %v", r.Header)
@@ -28,6 +30,8 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
         r.Body = io.NopCloser(bytes.NewReader(bodyContent)) // Reset body so it can be read again later
     }
     log.Printf("Request Body: %s", string(bodyContent))
+
+
 
 	var user models.User
 	err := json.NewDecoder(r.Body).Decode(&user)
